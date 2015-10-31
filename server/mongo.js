@@ -1,5 +1,10 @@
 var mongoose = require('mongoose');
-// var config = require('./config');
+if (process.env.config === undefined){
+  var config = require('./config');
+}
+else { //if we are on Heroku, just set the environment variable to the heroku environment variable
+  var config = process.env.config
+}
 
 mongoose.connect(config);
 
