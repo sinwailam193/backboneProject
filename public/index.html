@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./style.css"> 
+  </head>
+  <body>
+    <div class="container">
+      <h1>Practice Backbone Blog</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Author</th>
+            <th>Title</th>
+            <th>URL</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td><input class="form-control author-input"></td>
+            <td><input class="form-control title-input"></td>
+            <td><input class="form-control url-input"></td>
+            <td><button class="btn btn-primary add-blog">Add</button></td>
+          </tr>
+        </thead>
+        <tbody class="blogs-list"></tbody>
+      </table>
+
+    </div>
+
+    <script type="text/template" class="blogs-list-template">
+      <td><span class="author"><%= author %></span></td>
+      <td><span class="title"><%= title %></span></td>
+      <td><span class="url"><%= url %></span></td>
+      <td><button class="btn btn-warning edit-blog">Edit</button> <button class="btn btn-danger delete-blog">Delete</button></td>
+    </script>
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script src="./bower_components/underscore/underscore-min.js"></script>
+    <script src="./bower_components/backbone/backbone-min.js"></script>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>

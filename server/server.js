@@ -3,19 +3,26 @@ var mongo = require('./mongo');
 var port = process.env.PORT || 3000;
 var app = express();
  
+var main = __dirname.split("/")
+main.pop();
+main = main.join("/");
+app.use(express.static(main + "/public"));
 
-app.use(express.static(__dirname + "/public"));
 
-app.get('/', function(req, res){
-  mongo.Post.find(function(err, posts) {
-    if (err) {
-        res.send(500, 'There was an error - tough luck.');
-    }
-    else {
-        res.json(posts);
-    }
-  });
-})
+app.listen(port);
+
+console.log("listening on " + port);
+
+// app.get('/', function(req, res){
+//   mongo.Post.find(function(err, posts) {
+//     if (err) {
+//         res.send(500, 'There was an error - tough luck.');
+//     }
+//     else {
+//         res.json(posts);
+//     }
+//   });
+// })
 
 // app.get('/create', function(request, response) {
 //   // TODO: Create and save a Post model
@@ -34,7 +41,3 @@ app.get('/', function(req, res){
 //     }
 //   });
 // });
-
-app.listen(port);
-
-console.log("listening on " + port);
