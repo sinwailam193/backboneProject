@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
+var config = require('./config');
 
-mongoose.connect();
+mongoose.connect(config); //'mongodb://localhost/test'
 
 var postSchema = new mongoose.Schema({
     title:String,
     content:String
 });
 
-var Post = mongoose.model('Post', postSchema);
-module.exports = Post;
+exports.Post = mongoose.model('Post', postSchema);
