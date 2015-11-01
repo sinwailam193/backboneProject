@@ -8,4 +8,11 @@ var postSchema = new mongoose.Schema({
     content:String
 });
 
+var blogSchema = new mongoose.Schema({
+    author: String,
+    title: String,
+    url: String
+})
+
 exports.Post = mongoose.model('Post', postSchema);
+exports.Blog = mongoose.model('Blog', blogSchema);

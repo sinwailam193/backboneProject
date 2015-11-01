@@ -33,14 +33,17 @@
       <td><span class="author"><%= author %></span></td>
       <td><span class="title"><%= title %></span></td>
       <td><span class="url"><%= url %></span></td>
-      <td><button class="btn btn-warning edit-blog">Edit</button> <button class="btn btn-danger delete-blog">Delete</button></td>
+      <td>
+        <button class="btn btn-warning edit-blog">Edit</button> <button class="btn btn-danger delete-blog">Delete</button>
+        <button class="btn btn-success update-blog" style="display: none">Update</button> <button class="btn btn-danger cancel-blog" style="display: none">Cancel</button>
+      </td>
     </script>
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
-    <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
-    <script src="./bower_components/underscore/underscore-min.js"></script>
+    <script src="./bower_components/underscore/underscore.js"></script>
     <script src="./bower_components/backbone/backbone-min.js"></script>
 
     <script src="./js/script.js"></script>
+    <script src="./js/user-interaction.js"></script>
   </body>
 </html>
