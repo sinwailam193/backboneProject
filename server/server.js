@@ -68,6 +68,11 @@ io.sockets.on('connection', function(socket){
   socket.on('chat', function(){
     socket.emit('chat', {});
     socket.broadcast.emit('chat', {});
+  });
+
+  socket.on('change', function(){
+    socket.emit('change', {});
+    socket.broadcast.emit('change', {});
   })
 });
 

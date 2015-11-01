@@ -1,5 +1,6 @@
 var Message = Backbone.Model.extend({
   defaults: {
+    username: "",
     message: ""
   }
 })
@@ -25,7 +26,8 @@ var MessageView = Backbone.View.extend({
     this.$el.val("");
     _.each(this.model.toArray(), function(text){
       var current = self.$el.val();
-      self.$el.val(current + "Anonymous: " + text.toJSON().message + '\n');
+      var username = text.toJSON().username || "Anonymous";
+      self.$el.val(current + username + ": " + text.toJSON().message + '\n');
     });
     return this;
   }

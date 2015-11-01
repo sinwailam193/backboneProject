@@ -55,12 +55,14 @@ var BlogView = Backbone.View.extend({
     this.model.set('url', url);
 
     this.model.save(null);
+    socket.emit('change');
   },
   cancel: function(){
     blogsView.render();
   },
   delete: function(){
     this.model.destroy(); //this also send to server the id to tell mongo we're deleting this data
+    socket.emit('change');
   }
 });
 //------------------------------------------------------------------->

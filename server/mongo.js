@@ -4,6 +4,7 @@ var config = process.env.config || require('./config');
 mongoose.connect(config);
 
 var postSchema = new mongoose.Schema({
+  username: String,
   message: String
 });
 
