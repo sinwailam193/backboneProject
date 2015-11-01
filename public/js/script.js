@@ -14,7 +14,7 @@ var Blogs = Backbone.Collection.extend({
 
 var blogs = new Blogs();// instantiate
 
-//------------------------------------------------------------------->
+// //------------------------------------------------------------------->
 var BlogView = Backbone.View.extend({
   model: new Blog(),
   tagName: 'tr',

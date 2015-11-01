@@ -4,8 +4,7 @@ var config = process.env.config || require('./config');
 mongoose.connect(config);
 
 var postSchema = new mongoose.Schema({
-    title:String,
-    content:String
+  message: String
 });
 
 var blogSchema = new mongoose.Schema({
