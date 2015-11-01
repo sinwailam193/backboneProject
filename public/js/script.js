@@ -94,4 +94,4 @@ var BlogsView = Backbone.View.extend({
   }
 });
 
-new BlogsView();// instantiate
+var blogsView = new BlogsView();// instantiate

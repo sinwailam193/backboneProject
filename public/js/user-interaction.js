@@ -1,9 +1,9 @@
 var socket = io.connect();
 socket.on('chat', function () {
-  new MessageView()
+  messageView.model.fetch();
 });
 socket.on('change', function(){
-  new BlogsView();
+  blogsView.model.fetch();
 })
 
 $(function(){

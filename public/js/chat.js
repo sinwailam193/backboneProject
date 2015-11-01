@@ -33,4 +33,4 @@ var MessageView = Backbone.View.extend({
   }
 })
 
-new MessageView();
+var messageView = new MessageView();
