@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var mongo = require('./mongo');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
@@ -11,7 +12,24 @@ var main = __dirname.split("/")
 main.pop();
 main = main.join("/");
 app.use(express.static(main + "/public"));
+app.use(session({
+  secret: 'this is a secret',
+  saveUninitialized: true,
+  resave: true
+}));
 app.use(bodyParser.json()); //parse the req body so we can actually see the data
+
+var track;
+
+app.get('/sess', function(req, res){
+  track = req.session;
+  if(track.username){
+    res.json(track.username);
+  }
+  else{
+    res.json('none');
+  }
+});
 
 app.get('/blogs', function(req, res){
   mongo.Blog.find(function(err, blogs){
@@ -35,12 +53,28 @@ app.get('/text', function(req, res){
   })
 })
 
+app.post('/close', function(req, res){
+  track = req.session;
+  track.destroy(function(){});
+})
+
 app.post('/blogs', function(req, res){
   var blog = new mongo.Blog(req.body);
   blog.save();
 });
 
 app.post('/text', function(req, res){
+  track = req.session;
+  if(!track.username){
+    track.regenerate(function(err) {
+      if(err){
+        console.log(err);
+      }
+    });
+    track.username = req.body.username;
+    track.save(function(){});
+  }
+
   var text = new mongo.Post(req.body);
   text.save();
 })
